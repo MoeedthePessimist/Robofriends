@@ -2,8 +2,9 @@ import React from 'react';
 // import {Robots} from './robots';
 import SearchBox from '../Components/SearchBox';
 import Cardlist from '../Components/CardList';
-import './App.css'
-import ScrollPane from '../Components/Scrollpane'
+import './App.css';
+import ScrollPane from '../Components/Scrollpane';
+import ErrorBoundary from '../Components/ErrorBoundary';
 
 class App extends React.Component {
 
@@ -47,7 +48,9 @@ class App extends React.Component {
                     <h1>RoboFriends</h1>
                     <SearchBox searchChange = {this.onSearchChange}/>
                     <ScrollPane>
-                        <Cardlist robots={filteredRobots}/> 
+                        <ErrorBoundary>
+                            <Cardlist robots={filteredRobots}/> 
+                        </ErrorBoundary>
                     </ScrollPane>
                 </div>
             )
